@@ -25,8 +25,11 @@ function agregarAmigo() {
 function sortearAmigo() {
     if (amigos.length === 0) return alert("La lista de amigos está vacío.");
     let posicionAmigoDeLaLista = Math.floor(Math.random()*amigos.length);
-    if (amigoElement.innerHTML !== amigos[posicionAmigoDeLaLista]) {
-        alert("Intenta otra vez.")
-    }
+	amigoEncontradoEnLista = false;
+    for (let idLista=0; !amigoEncontradoEnLista; idLista++) {
+		amigoEncontradoEnLista = amigoElement.innerHTML === amigos[idLista];
+	}
+	if (!amigoEncontradoEnLista) alert(`La persona elegida fue ${amigos[posicionAmigoDeLaLista]}`)
+	else alert("Adivinaste!\n" + `${amigoElement.innerHTML} fue la persona elegida.`) 
     resultado.innerHTML = `Amigo sorteado: ${amigos[posicionAmigoDeLaLista]}`;
 }
